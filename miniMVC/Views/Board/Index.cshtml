@@ -1,0 +1,36 @@
+﻿
+@model List<miniMVC.Models.BoardModel>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>留言板</h1>
+        
+        <br />
+        <form action="/Board/add">
+            <label>名稱</label>
+            <input type="text" name="name"/>
+            <label>留言</label>
+            <textarea name="message"></textarea>
+            <input type="submit" value="留言"/>
+        </form>
+
+        <br />
+        @foreach(var item in Model)
+        {
+            <div>
+                <span>@item.name</span>
+                <br />
+                <span>@item.message</span>
+                <br />
+                <span>留言時間：</span>@item.time
+            </div>
+            <br />
+        }
+    </body>
+</html>
