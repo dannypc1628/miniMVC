@@ -15,7 +15,7 @@ namespace miniMVC.Models
             string conStr = dataStr.ConnectionString;
             SqlConnection con = new SqlConnection(conStr);
 
-            string sqlStr = "select * from TagModel";
+            string sqlStr = "select * from Tag";
             SqlCommand cmd = new SqlCommand(sqlStr, con);
 
             con.Open();

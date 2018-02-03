@@ -53,6 +53,9 @@ namespace miniMVC.Models
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
+
+            string sqlStrGetID = "select @@IDENTITY AS";
+            
         }
     }
 }

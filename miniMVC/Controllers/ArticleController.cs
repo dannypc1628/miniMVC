@@ -17,11 +17,11 @@ namespace miniMVC.Controllers
             List<TagModel> tag = tagO.get();
             List<SelectListItem> list_Item = new List<SelectListItem>();
             int count =  tag.Count();
-            for(int i =0; i< tag.Count(); i++)
+            for(int i =0; i< count; i++)
             {
                 list_Item.Add(new SelectListItem { Text = tag[i].Name, Value = Convert.ToString(tag[i].Id) });
             }
-            ViewBag.List = new SelectList(list_Item, "Value", "Name", "");
+            ViewBag.TagList = new SelectList(list_Item, "Value", "Text", "");
             return View();
         }
         
@@ -42,9 +42,9 @@ namespace miniMVC.Controllers
             if (ModelState.IsValid)
             {
                 ArticleModel art = new ArticleModel();
+                art.Name = data.Name;
                 art.Title = data.Title;
                 art.Contant = data.Content;
-                art.Name = data.Name;
                 art.Time = DateTime.Now;
 
                 ArticleOperate artOp = new ArticleOperate();
@@ -52,7 +52,7 @@ namespace miniMVC.Controllers
 
 
             }
-            return View()
+            return View();
         }
     }
 }
