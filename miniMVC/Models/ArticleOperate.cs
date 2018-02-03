@@ -29,32 +29,33 @@ namespace miniMVC.Models
                 string aName = Convert.ToString(reader.GetValue(reader.GetOrdinal("Name")));
                 DateTime aTime = Convert.ToDateTime(reader.GetValue(reader.GetOrdinal("Time")));
 
-                Article_List.Add(new ArticleModel { Id = aId, Title=aTitle, Contant=aContent, Name = aName, Time = aTime});
+                Article_List.Add(new ArticleModel { Id = aId, Title=aTitle, Content=aContent, Name = aName, Time = aTime});
             }
 
             con.Close();
 
             return Article_List;
         }
-        public void addArticle(ArticleModel data)
+        public int addArticle(ArticleModel data)
         {
             ConnectionStringSettings dataStr = ConfigurationManager.ConnectionStrings["MyDatabase"];
             string conStr = dataStr.ConnectionString;
             SqlConnection con = new SqlConnection(conStr);
 
-            string sqlStr = "insert into Article (title,content,name,time) Values(@aTitle,@aContent,@aName,@aTime)";
+            string sqlStr = "insert into Article (title,content,name,time) Values(@aTitle,@aContent,@aName,@aTime);select SCOPE_IDENTITY()";
             SqlCommand cmd = new SqlCommand(sqlStr, con);
 
             cmd.Parameters.AddWithValue("@aTitle", data.Title);
-            cmd.Parameters.AddWithValue("@aContent", data.Contant);
+            cmd.Parameters.AddWithValue("@aContent", data.Content);
             cmd.Parameters.AddWithValue("@aName", data.Name);
             cmd.Parameters.AddWithValue("@aTime", data.Time);
 
             con.Open();
-            cmd.ExecuteNonQuery();
+            int id = Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
 
-            string sqlStrGetID = "select @@IDENTITY AS";
+            
+            return id;
             
         }
     }

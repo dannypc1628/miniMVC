@@ -44,12 +44,18 @@ namespace miniMVC.Controllers
                 ArticleModel art = new ArticleModel();
                 art.Name = data.Name;
                 art.Title = data.Title;
-                art.Contant = data.Content;
+                art.Content = data.Content;
                 art.Time = DateTime.Now;
 
                 ArticleOperate artOp = new ArticleOperate();
-                artOp.addArticle(art);
+                int Article_Id = artOp.addArticle(art);
 
+                ArticleToTagModel artTag = new ArticleToTagModel();
+                artTag.Article_Id = Article_Id;
+                artTag.Tag_Id = data.Tag_Id;
+
+                ArticleToTagOperate artToTag = new ArticleToTagOperate();
+                artToTag.insert(artTag);
 
             }
             return View();

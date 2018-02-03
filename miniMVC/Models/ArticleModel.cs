@@ -11,7 +11,7 @@ namespace miniMVC.Models
 
         public string Title { get; set; }
 
-        public string Contant { get; set; }
+        public string Content { get; set; }
 
         public string Name { get; set; }
 

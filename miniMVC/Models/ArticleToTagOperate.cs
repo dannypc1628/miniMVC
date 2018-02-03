@@ -20,7 +20,7 @@ namespace miniMVC.Models
 
             
             cmd.Parameters.AddWithValue("@aArticle_Id", data.Article_Id);
-            cmd.Parameters.AddWithValue("@Tag_Id", data.Tag_Id);
+            cmd.Parameters.AddWithValue("@aTag_Id", data.Tag_Id);
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
