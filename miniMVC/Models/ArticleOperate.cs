@@ -36,6 +36,34 @@ namespace miniMVC.Models
 
             return Article_List;
         }
+
+        public ArticleModel getOneArticle(string Article_id)
+        {
+            ConnectionStringSettings dataStr = ConfigurationManager.ConnectionStrings["MyDatabase"];
+            string conStr = dataStr.ConnectionString;
+            SqlConnection con = new SqlConnection(conStr);
+
+            string sqlStr = "select * from Article where id=@aID";
+            SqlCommand cmd = new SqlCommand(sqlStr, con);
+            cmd.Parameters.AddWithValue("@aID", Article_id);
+
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            ArticleModel Article = new ArticleModel();
+            while (reader.Read())
+            {
+                Article.Id = Convert.ToInt32(reader.GetValue(reader.GetOrdinal("Id")));
+                Article.Title = Convert.ToString(reader.GetValue(reader.GetOrdinal("Title")));
+                Article.Content = Convert.ToString(reader.GetValue(reader.GetOrdinal("Content")));
+                Article.Name = Convert.ToString(reader.GetValue(reader.GetOrdinal("Name")));
+                Article.Time = Convert.ToDateTime(reader.GetValue(reader.GetOrdinal("Time")));
+               
+            }
+
+            con.Close();
+
+            return Article ;
+        }
         public int addArticle(ArticleModel data)
         {
             ConnectionStringSettings dataStr = ConfigurationManager.ConnectionStrings["MyDatabase"];
