@@ -1,0 +1,11 @@
+﻿@model List<miniMVC.Models.TagModel>
+
+<div>
+    <ul>
+        @foreach (var a in Model)
+        {
+            <li>@Html.ActionLink(a.Name,"TagClass",new { id=a.Id})</li>
+        }
+    </ul>
+    
+</div>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body class="bg-light">
+    <div>
+        <div>asp123論壇</div>
+        <div>@Html.Action("GetTag","TagClass")</div>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <hr>
+    <div>
+        <spn>劉長庚 &nbsp; 天主教輔仁大學資訊工程所</spn>
+        <div class="float-right">
+            <a href="https://www.facebook.com/dannyliu.me/">fb:長庚的作業簿</a>
+            &nbsp; &nbsp;
+            <a href="https://github.com/dannypc1628/">程式碼:github</a>
+        </div>
+    </div>
+</body>
+</html>
