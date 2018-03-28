@@ -1,11 +1,13 @@
 ﻿@model List<miniMVC.Models.TagModel>
 
-<div>
-    <ul>
+
+    <ul class="navbar-nav mr-auto flex-row">
         @foreach (var a in Model)
         {
-            <li>@Html.ActionLink(a.Name,"TagClass",new { id=a.Id})</li>
+            <li class="nav-item">
+                @Html.ActionLink(a.Name,"TagClass",new { id=a.Id}, new { @class = "nav-link" })
+            </li>
         }
     </ul>
     
-</div>
+

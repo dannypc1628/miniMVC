@@ -33,5 +33,32 @@ namespace miniMVC.Models
 
             return Tag_List;
         }
+
+        public string getIdName(int id)
+        {
+            ConnectionStringSettings dataStr = ConfigurationManager.ConnectionStrings["MyDatabase"];
+            string conStr = dataStr.ConnectionString;
+            SqlConnection con = new SqlConnection(conStr);
+
+            string sqlStr = "Select Name from Tag Where Id=@aId";
+            SqlCommand cmd = new SqlCommand(sqlStr, con);
+            cmd.Parameters.AddWithValue("@aId", id);
+
+            string ans = "";
+            con.Open();
+            object data = cmd.ExecuteScalar();
+            if (data == null)
+            {
+                ans = "null";
+            }
+            else
+            {
+                ans =  data.ToString();
+            }
+
+            con.Close();
+
+            return ans;
+        }
     }
 }

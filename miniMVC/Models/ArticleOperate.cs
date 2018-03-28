@@ -37,7 +37,7 @@ namespace miniMVC.Models
             return Article_List;
         }
 
-        public ArticleModel getOneArticle(string Article_id)
+        public ArticleModel getOneArticle(int Article_id)
         {
             ConnectionStringSettings dataStr = ConfigurationManager.ConnectionStrings["MyDatabase"];
             string conStr = dataStr.ConnectionString;
