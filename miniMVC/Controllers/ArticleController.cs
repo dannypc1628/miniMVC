@@ -10,8 +10,19 @@ namespace miniMVC.Controllers
 {
     public class ArticleController : Controller
     {
+        public ActionResult Index(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ArticleOperate article_operate = new ArticleOperate();
+            ArticleModel thisData = new ArticleModel();
+            thisData = article_operate.getOneArticle((int)id);
+            return View(thisData);
+        }
         // GET: Article
-        public ActionResult Index()
+        public ActionResult Create()
         {
             TagOperate tagO = new TagOperate();
             List<TagModel> tag = tagO.get();
@@ -58,7 +69,7 @@ namespace miniMVC.Controllers
                 artToTag.insert(artTag);
 
             }
-            return View();
+            return RedirectToAction("Index","TagClass",new { id=data.Tag_Id});
         }
     }
 }

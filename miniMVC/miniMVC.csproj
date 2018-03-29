@@ -150,6 +150,7 @@
     <Content Include="Views\Shared\_MyLayoutPage.cshtml" />
     <Content Include="Views\_BarPartialPage.cshtml" />
     <Content Include="Views\TagClass\Index.cshtml" />
+    <Content Include="Views\Article\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
