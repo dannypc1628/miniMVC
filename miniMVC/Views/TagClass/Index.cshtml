@@ -4,9 +4,25 @@
 @{
     
     Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
+    var data = Model as IPagedList<miniMVC.Models.ArticleModel>;
 }
 <link rel="stylesheet" href="~/Content/PagedList.css">
 <h2>@ViewBag.TagName</h2>
+手動
+@foreach(var a in ViewBag.dataList)
+{
+    <div>
+        <b>@a.Title</b>
+        <br />
+        <span>@a.Name</span>
+        <br />
+        <span>@a.Content</span>
+    </div>
+    <br /><br />
+}
+
+PageList
+@Html.PagedListPager(list:data,generatePageUrl:page=> Url.Action("",new { page=page}))
 
 
 

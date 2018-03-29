@@ -11,21 +11,21 @@ namespace miniMVC.Controllers
         // GET: TagClass
         public ActionResult Index(int id,int page=1)
         {
-            TagOperate operate = new TagOperate();
-            string name = operate.getIdName(id);
+            TagOperate tag_operate = new TagOperate();
+            string name = tag_operate.getIdName(id);
             ViewBag.TagName = name;
-            ArticleToTagOperate operate1 = new ArticleToTagOperate();
-            var list = operate1.select(1, id);
-            ArticleOperate operate2 = new ArticleOperate();
-            List<ArticleModel> dataList = new List<ArticleModel>;
+            ArticleToTagOperate a_t_operate = new ArticleToTagOperate();
+            var list = a_t_operate.select(1, id);
+            ArticleOperate article_operate = new ArticleOperate();
+            List<ArticleModel> dataList = new List<ArticleModel>();
             foreach(var a in list)
             {
                 ArticleModel thisData = new ArticleModel();
-                thisData = operate2.getOneArticle(a.Article_Id);
+                thisData = article_operate.getOneArticle(a.Article_Id);
                 dataList.Add(thisData);
             }
-            
-            var data = dataList.ToPagedList(page, 10);
+            ViewBag.dataList = dataList;
+            var data = dataList.ToPagedList(pageNumber:page, pageSize:10);
             return View(data);
         }
 

@@ -35,14 +35,15 @@ namespace miniMVC.Models
             string sqlStr = "";
             if (wh == 0)
             {
-                sqlStr = "select * from Board where Article_Id=1";
+                sqlStr = "select * from ArticleToTag where Article_Id=@aId";
             }
             if (wh == 1)
             {
-                sqlStr = "select * from Board where Tag_Id=1";
+                sqlStr = "select * from ArticleToTag where Tag_Id=@aID";
             }
 
             SqlCommand cmd = new SqlCommand(sqlStr, con);
+            cmd.Parameters.AddWithValue("@aID", id);
 
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
