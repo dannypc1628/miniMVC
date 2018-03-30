@@ -24,7 +24,7 @@
 }
 
 PageList
-@Html.PagedListPager(list:data,generatePageUrl:page=> Url.Action("",new { page=page}))
+@Html.PagedListPager(list: data, generatePageUrl: page => Url.Action("Index", new { page = page}))
 
 
 
