@@ -135,7 +135,9 @@
     <Compile Include="Models\ArticleToTagOperate.cs" />
     <Compile Include="Models\BoardModel.cs" />
     <Compile Include="Models\BoardOperate.cs" />
+    <Compile Include="Models\MessageCommitModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\MessageOperate.cs" />
     <Compile Include="Models\TagModel.cs" />
     <Compile Include="Models\TagOperate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
